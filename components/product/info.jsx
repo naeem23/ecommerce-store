@@ -5,7 +5,7 @@ import { ShoppingCart } from 'lucide-react';
 import { formatter } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 
-const Info = ({ data }) => {
+export const Info = ({ data }) => {
     return (
         <div>
             <h1 className="text-3xl font-bold text-gray-900">{data.name}</h1>
@@ -35,5 +35,3 @@ const Info = ({ data }) => {
         </div>
     );
 };
-
-export default Info;

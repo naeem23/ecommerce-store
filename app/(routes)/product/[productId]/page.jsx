@@ -2,7 +2,7 @@ import { getProducts, getProduct } from '@/actions';
 
 import Container from '@/components/container';
 import { Gallary } from '@/components/product/gallary';
-import Info from '@/components/product/info';
+import { Info } from '@/components/product/info';
 import { ProductList } from '@/components/product/product-list';
 
 const ProductPage = async ({ params }) => {
@@ -16,7 +16,7 @@ const ProductPage = async ({ params }) => {
     }
 
     return (
-        <div>
+        <div className="bg-white">
             <Container>
                 <div className="px-4 sm:px-6 lg:px-8 py-10">
                     <div className="lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start">

@@ -22,7 +22,7 @@ export const Gallary = ({ images = [] }) => {
                                         src={image.url}
                                         alt="product-image"
                                         className={cn(
-                                            'object-cover object-center absolute rounded-md ring-2 ring-offset-2',
+                                            'object-cover object-center absolute inset-0 rounded-md ring-2 ring-offset-2',
                                             selected
                                                 ? 'ring-black'
                                                 : 'ring-transparent'
