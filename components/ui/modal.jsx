@@ -3,8 +3,9 @@
 import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { X } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
-export const Modal = ({ open, onClose, title, children }) => {
+export const Modal = ({ open, onClose, title, children, size = 'md' }) => {
     return (
         <Transition appear show={open} as={Fragment}>
             <Dialog as="div" className="relative z-10" onClose={onClose}>
@@ -31,7 +32,14 @@ export const Modal = ({ open, onClose, title, children }) => {
                             leaveFrom="opacity-100 scale-100"
                             leaveTo="opacity-0 scale-95"
                         >
-                            <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                            <Dialog.Panel
+                                className={cn(
+                                    'w-full transform overflow-hidden rounded-lg bg-white p-6 text-left align-middle shadow-2xl transition-all',
+                                    size === 'lg'
+                                        ? 'max-w-3xl pb-8'
+                                        : 'max-w-md'
+                                )}
+                            >
                                 {/* close button */}
                                 <div className="flex justify-between items-center">
                                     <Dialog.Title

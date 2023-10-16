@@ -4,14 +4,28 @@ import Image from 'next/image';
 import { Expand, ShoppingCart } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
+import usePreviewModal from '@/hooks/use-preview-modal';
 import { Button } from '@/components/ui/button';
 import { formatter } from '@/lib/utils';
+import useCart from '@/hooks/use-cart';
 
 export const ProductCard = ({ data }) => {
     const router = useRouter();
+    const previewModal = usePreviewModal();
+    const cart = useCart();
 
     const handleClick = () => {
         router.push(`/product/${data?.id}`);
+    };
+
+    const handlePreview = (event) => {
+        event.stopPropagation();
+        previewModal.onOpen(data);
+    };
+
+    const addToCart = (event) => {
+        event.stopPropagation();
+        cart.addItem(data);
     };
 
     return (
@@ -30,7 +44,7 @@ export const ProductCard = ({ data }) => {
                 <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
                     <div className="flex justify-center items-center gap-x-6">
                         <Button
-                            onClick={() => {}}
+                            onClick={handlePreview}
                             size="icon"
                             variant="secondary"
                             className="rounded-full border bg-white shadow-md p-2 hover:scale-110 transition"
@@ -38,7 +52,7 @@ export const ProductCard = ({ data }) => {
                             <Expand size={20} className="text-gray-600" />
                         </Button>
                         <Button
-                            onClick={() => {}}
+                            onClick={addToCart}
                             size="icon"
                             variant="secondary"
                             className="rounded-full border bg-white shadow-md p-2 hover:scale-110 transition"

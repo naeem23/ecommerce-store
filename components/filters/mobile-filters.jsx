@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Plus } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -9,9 +9,18 @@ import { Modal } from '@/components/ui/modal';
 
 export const MobileFilters = ({ sizes, colors }) => {
     const [open, setOpen] = useState(false);
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
     const onOpen = () => setOpen(true);
     const onClose = () => setOpen(false);
+
+    if (!isMounted) {
+        return null;
+    }
 
     return (
         <>
